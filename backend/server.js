@@ -5,14 +5,14 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import BooksRoute from "./Routes/BooksRoute.js";
-
+import  cookieParser from 'cookie-parser'
 // Middleware for parsing request body
 
 const app = express();
 //parse data to json
 app.use(express.json());
 app.use(cors());
-
+app.use(cookieParser())
 app.use("/books", BooksRoute);
 
 const port = process.env.PORT;

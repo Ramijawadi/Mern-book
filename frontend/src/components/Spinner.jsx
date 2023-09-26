@@ -1,12 +1,35 @@
+/* eslint-disable react/prop-types */
 
 /* eslint-disable no-unused-vars */
 
-import React from 'react';
+import React , {useEffect , useState} from 'react';
+import Prospin from '../assets/spin.gif'
 
-const Spinner = () => {
+
+
+const Spinner = ({duration}) => {
+  
+  
+
+  const [showSpinner, setShowSpinner] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSpinner(true);
+    }, duration);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [duration]);
+
+
+
   return (
-    <div className='animate-pings w-16 h-16 m-8 rounded-full bg-sky-600'>
-      
+    <div>
+       {showSpinner ? (
+      <img src={Prospin} />
+     ) : ("")}
     </div>
   );
 }
